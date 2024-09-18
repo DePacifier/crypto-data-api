@@ -1,0 +1,15 @@
+# Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
+v: 0
+micros:
+  - name: CryptoDataAPI
+    src: ./
+    engine: python3.9
+    primary: true
+    run: uvicorn app.main:app
+    dev: uvicorn app.main:app --reload
+    actions:
+      - id: keep-alive
+        name: Keep Micro Alive
+        description: A scheduled action to keep the micro alive
+        trigger: schedule
+        default_interval: 1 minute
